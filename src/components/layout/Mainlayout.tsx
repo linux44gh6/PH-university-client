@@ -1,20 +1,9 @@
-import { Layout, Menu, theme } from 'antd';
+import { Layout, Menu, MenuProps, theme } from 'antd';
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import { createElement } from 'react';
-const items = [
-    {
-        key:'1',
-        label:"DashBoard"
-    },
-    {
-        key:'2',
-        label:"Create Admin"
-    },
-    {
-        key:'3',
-        label:"ADD student"
-    }
-]
+import { Outlet } from 'react-router-dom';
+import { adminSidebar } from '../../routes/admin.route';
+ 
   
 const Mainlayout = () => {
     const { Header, Content, Footer, Sider } = Layout;
@@ -30,10 +19,10 @@ const Mainlayout = () => {
             console.log(collapsed, type);
           }}
         >
-          <div style={{color:"white", textAlign:"center",font:"bold"}}>
+          <div style={{color:"white",font:"bold",display:"flex",justifyContent:'center',alignItems:"center",height:"4rem"}}>
             PH-University
           </div>
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items} />
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={adminSidebar} />
         </Sider>
         <Layout>
           <Header style={{ padding: 0,  }} />
@@ -45,7 +34,7 @@ const Mainlayout = () => {
              
               }}
             >
-              <h1>this is the main content</h1>
+              <Outlet/>
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
