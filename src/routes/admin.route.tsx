@@ -18,7 +18,7 @@ type TSidebarsItem={
     children?:TSidebarsItem[]
 }
 
-const adminPath: AdminRoute[] = [
+export const adminPath: AdminRoute[] = [
     {
         name: 'Dashboard',
         path: 'dashboard',
@@ -46,27 +46,29 @@ const adminPath: AdminRoute[] = [
     }
 ];
 
-export const adminRoutes = adminPath.reduce<{ path: string; element: JSX.Element }[]>((acc, item) => {
-    if (item.path && item.element) {
-        acc.push({
-            path: item.path,
-            element: item.element,
-        });
-    }
+// export const adminRoutes = adminPath.reduce<{ path: string; element: JSX.Element }[]>((acc, item) => {
+//     if (item.path && item.element) {
+//         acc.push({
+//             path: item.path,
+//             element: item.element,
+//         });
+//     }
 
-    if (item.children) {
-        item.children.forEach((child) => {
-            if (child.path && child.element) {
-                acc.push({
-                    path: child.path,
-                    element: child.element,
-                });
-            }
-        });
-    }
+//     if (item.children) {
+//         item.children.forEach((child) => {
+//             if (child.path && child.element) {
+//                 acc.push({
+//                     path: child.path,
+//                     element: child.element,
+//                 });
+//             }
+//         });
+//     }
 
-    return acc;
-}, []); // Initialize with an empty array and explicitly type the accumulator
+//     return acc;
+// }, []); 
+// 
+// // Initialize with an empty array and explicitly type the accumulator
 export const adminSidebar = adminPath.reduce((acc:TSidebarsItem[], item) => {
     if (item.path && item.name) {
         acc.push({

@@ -2,28 +2,16 @@ import { Layout, Menu, MenuProps, theme } from 'antd';
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import { createElement } from 'react';
 import { Outlet } from 'react-router-dom';
-import { adminSidebar } from '../../routes/admin.route';
+import { adminPath, adminSidebar } from '../../routes/admin.route';
+import { sidebarItemGenaraton } from '../../utils/sidebarItemGenarator';
+import Sidebar from './sidebar';
  
   
 const Mainlayout = () => {
     const { Header, Content, Footer, Sider } = Layout;
     return (
         <Layout style={{height:"100vh"}}>
-        <Sider
-          breakpoint="lg"
-          collapsedWidth="0"
-          onBreakpoint={(broken) => {
-            console.log(broken);
-          }}
-          onCollapse={(collapsed, type) => {
-            console.log(collapsed, type);
-          }}
-        >
-          <div style={{color:"white",font:"bold",display:"flex",justifyContent:'center',alignItems:"center",height:"4rem"}}>
-            PH-University
-          </div>
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={adminSidebar} />
-        </Sider>
+       <Sidebar/>
         <Layout>
           <Header style={{ padding: 0,  }} />
           <Content style={{ margin: '24px 16px 0' }}>
