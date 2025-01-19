@@ -5,12 +5,16 @@ import './index.css'
 import { RouterProvider } from 'react-router-dom'
 import router from './routes/routes.tsx'
 import { Provider } from 'react-redux'
-import store from './redux/features/store.tsx'
-
+import store, { persistor } from './redux/features/store.tsx'
+import { PersistGate } from 'redux-persist/integration/react'
+import { Toaster } from 'sonner'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
-    <RouterProvider router={router}/>
+      <PersistGate loading={null} persistor={persistor}>
+      <RouterProvider router={router}/>
+      </PersistGate>
+    <Toaster/>
     </Provider>
   
   </StrictMode>,

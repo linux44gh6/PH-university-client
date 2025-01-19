@@ -4,6 +4,7 @@ import AdminDashboard from "../pages/admin/adminDashboard";
 import CreateAdmin from "../pages/admin/createAdmin";
 import CreateFaculty from "../pages/admin/createFaculty";
 import { ReactNode } from "react";
+import AcademicSemester from "../pages/admin/AcademicManagement/academicSemester";
 
 type AdminRoute = {
     name: string;
@@ -23,6 +24,16 @@ export const adminPath: AdminRoute[] = [
         name: 'Dashboard',
         path: 'dashboard',
         element: <AdminDashboard />
+    },
+    {
+        name:"Academic Semester",
+        children: [
+            {
+                name: 'academic semester',
+                path: 'academic-semester',
+                element: <AcademicSemester/>
+            },
+        ]
     },
     {
         name: 'User Management',
